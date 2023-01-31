@@ -1,0 +1,24 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<h3>Actualiza Bicicletas</h3>
+
+    {% if form %}
+
+        <form action="" method="POST">
+
+            {% csrf_token %}
+             <table>   
+            {{form.as_table}}
+            </table>>
+            <input type="submit" value ="Actualizar">
+        </form>
+    {% endif %}
+          
+    {% if form_errors  %}
+        {{form_errors}}
+    {% endif %}
+    {% if message %}
+        {{message}}
+    {% endif %}    
+{% endblock %}

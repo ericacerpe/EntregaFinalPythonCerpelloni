@@ -1,11 +1,16 @@
 {% extends 'base.html'%}
 
 
-        <h2>Listado de Indumentaria</h2>
+        <h2>Listado de Bicicletas</h2>
 
         {% block content%}
-
-        <a href="/ECycling/crea_bicicletas/" class="btn btn-primary btn-sm">Crear Bicicletas</a>
+        {% if request.user.is_authenticated %}
+          {% if request.user.is_superuser %}
+            <a href="/ECycling/productos/crea_bicicletas/" class="btn btn-primary btn-sm">Crear Bicicletas</a>
+          {% endif %}
+        {% endif %}  
+        
+        
         <br></br>
 
         {% for bicicleta in bicicletas %}
@@ -17,7 +22,12 @@
               <p class="card-text">El rodado es {{bicicleta.rodado}}  </p>
               <p class="card-text">Marca  {{bicicleta.marca}} </p>
               <p class="card-text">Precio {{bicicleta.precio}} </p>
-          
+              {% if request.user.is_authenticated %}
+              {% if request.user.is_superuser %}
+                <a href="/ECycling/productos/actualiza_bicicletas/{{bicicleta.pk}}" class="btn btn-primary">Actualizar</a>
+                <a href="/ECycling/productos/borra_bicicletas/{{bicicleta.pk}}" class="btn btn-primary">Borrar</a>
+                {% endif %}
+                {% endif %}     
               </div>
           </div>
  

@@ -2,6 +2,13 @@
 
 {% block content %}
 <h1>ECyling</h1>
+
+    
+    
+    {% if message %}
+        <h3>{{message}}</h3>
+    {% endif %}    
+
 <article class="a-page is-work" data-router-view="renderer"> 
     <div class="a-wrapper"> 
         <div class="a-scroll" style="transform: translate3d(0px, 0px, 0px);"> 

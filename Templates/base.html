@@ -27,16 +27,35 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
+                    {% if request.user.is_authenticated %}
+                    {% if request.user.is_superuser %}
                     <li class="nav-item active">
                         <a class="nav-link" href="/ECycling/lista_clientes">Clientes <span class="sr-only">(current)</span></a>
                     </li>
+                    {% endif %}
+                    {% endif %}
                     <li class="nav-item">
-                        <a class="nav-link" href="/ECycling/lista_indumentaria">Indumenaria</a>
+                        <a class="nav-link" href="/ECycling/productos/lista_indumentaria">Indumenaria</a>
+                    </li>
+                    <li class="nav-item" style="margin-right: 990px;">
+                        <a class="nav-link" href="/ECycling/productos/lista_bicicleta">Bicicletas</a>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ECycling/users/logout">Logout</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/ECycling/lista_bicicleta">Bicicletas</a>
+                        <a class="nav-link" href="/ECycling/users/update">{{request.user.username}}</a>
                     </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ECycling/users/login">Login</a>
+                    </li> 
                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ECycling/users/registrarse">Registrarse</a>
+                    </li>
+                    {% endif %}
                 </ul>
                 <form class="form-inline my-2 my-lg-0" action ="/ECycling/lista_clientes" method="GET" >
                     <input class="form-control mr-sm-2" type="search" placeholder="Busca Clientes" aria-label="Search" name="search">
