@@ -8,7 +8,7 @@ class indumentaria(models.Model):
     nombre=models.CharField(max_length=100,null=True)
     stock=models.IntegerField (null=False,default=0)
     precio=models.FloatField (null=False,default=0)
-    imagen=models.ImageField (upload_to='producto_image',null=True, blank=True)
+    imagen=models.ImageField (upload_to='fotos_productos',null=True, blank=True)
 
 
 class bicicletas(models.Model):

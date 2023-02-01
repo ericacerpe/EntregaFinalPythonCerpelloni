@@ -20,8 +20,8 @@ urlpatterns=[
     #path('lista_bicicleta/',lista_bicicleta),
     path('productos/', include('productos.urls')),
     path('users/', include('users.urls')),
+    path('users/profile/', include('users.urls')),
    
  
 
 ]
-urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

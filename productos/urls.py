@@ -5,6 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from productos.views import crea_indumentaria,lista_indumentaria,crea_bicicletas,lista_bicicleta,IndumentariaUpdateView,IndumentariaDeleteView,BicicletaUpdateView,BicicletaDeleteView
 from ECycling.views import index 
+
 urlpatterns=[
     path('', index, name='index'),
    
@@ -20,4 +21,3 @@ urlpatterns=[
  
 
 ]
-urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

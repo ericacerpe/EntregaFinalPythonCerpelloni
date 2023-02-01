@@ -4,5 +4,5 @@ from users.models import UserProfile
 
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display=('telefono','fecha_nacimiento')
+    list_display=('user','telefono','fecha_nacimiento','foto_perfil')
     #search_fields=('nombre')

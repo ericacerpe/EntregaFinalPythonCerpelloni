@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import  UserCreationForm
 from django.contrib.auth.models import User
+from users.models import UserProfile
 from django import forms
 
 class registerform(UserCreationForm):
@@ -16,3 +17,11 @@ class userupdateform(forms.ModelForm):
     class Meta:
         model = User
         fields =['username','first_name','last_name']
+
+class userprofilefom(forms.ModelForm):
+    class Meta:
+        model= UserProfile
+        fields =['telefono','fecha_nacimiento','foto_perfil']
+
+
+

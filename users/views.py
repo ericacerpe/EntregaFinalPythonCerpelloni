@@ -4,8 +4,10 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import render, redirect
-from users.form import registerform, userupdateform
+from users.form import registerform, userupdateform,userprofilefom
+from users.models import UserProfile
 from django.contrib.auth.models import User
+
 
 
 def login_view(request):
@@ -49,7 +51,8 @@ def register(request):
     elif request.method =='POST':
          form =registerform(request.POST)
          if form.is_valid():
-                form.save()
+                user = form.save()
+                UserProfile.objects.create(user=user)
                 return redirect('login')    
          context ={
             'errors':form.errors,
@@ -82,4 +85,33 @@ def update_user(request):
             'errors':form.errors,
             'form':userupdateform()
         }           
-         return render (request, 'Users/update_user.html', context=context)        
+         return render (request, 'Users/update_user.html', context=context)    
+
+@login_required
+def update_user_profile(request):
+    if  request.method == 'GET':
+        form = userprofilefom(initial={
+        'telefono':request.user.profile.telefono,
+        'fecha_nacimiento':request.user.profile.fecha_nacimiento,
+        'foto_perfil':request.user.profile.foto_perfil
+        }
+        )
+        context ={
+            'form': form
+        }
+        return render (request, 'users/update_profile.html', context=context)
+    elif request.method =='POST':
+         form =userprofilefom(request.POST,request.FILES)
+         if form.is_valid():
+                request.user.profile.telefono=form.cleaned_data.get('telefono')
+                request.user.profile.fecha_nacimiento=form.cleaned_data.get('fecha_nacimiento')
+                request.user.profile.foto_perfil=form.cleaned_data.get('foto_perfil')
+                request.user.profile.save()
+                
+                return redirect('index')    
+         context ={
+            'errors':form.errors,
+            'form':userprofilefom()
+        }           
+         return render (request, 'Users/register.html', context=context)    
+

@@ -22,9 +22,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('ECycling/',include('ECycling.url')),
+    path('ECycling/',include('ECycling.urls')),
+    path('user/',include('users.urls')),
+    path('productos/',include('productos.urls')),
     path('',index, name='index'),
    
-]
-
-urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
