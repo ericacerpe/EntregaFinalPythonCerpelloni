@@ -10,6 +10,9 @@ class indumentaria(models.Model):
     precio=models.FloatField (null=False,default=0)
     imagen=models.ImageField (upload_to='fotos_productos',null=True, blank=True)
 
+def __str__(self):
+    return f"{self.indumentaria} - {self.imagen}"
+
 
 class bicicletas(models.Model):
     tipo=models.CharField(max_length=50,null=False)
@@ -17,4 +20,7 @@ class bicicletas(models.Model):
     rodado=models.IntegerField(null=False,default=0)
     marca=models.CharField(max_length=50,null=True)
     precio=models.FloatField (null=False,default=0)
+    descuento=models.BooleanField(null=True)
+    imagen=models.ImageField  (upload_to='fotos_productos',null=True, blank=True)
+
 

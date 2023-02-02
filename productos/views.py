@@ -8,8 +8,10 @@ from productos.models import indumentaria
 from productos.models import bicicletas
 from productos.forms import IndumentariaForm
 from productos.forms import BicicletaForm
+from django.shortcuts import render, redirect
+from django.views.generic.edit import CreateView,DeleteView,UpdateView
 
-def crea_indumentaria(request):
+""" def crea_indumentaria(request):
     if request.method=='GET':
         context ={
             'form': IndumentariaForm()
@@ -17,27 +19,35 @@ def crea_indumentaria(request):
 
         return render (request,'Productos/create_indumentaria.html',context=context)
     elif request.method=='POST':
-        form = IndumentariaForm(request.POST)
+        form = IndumentariaForm(request.POST,request.FILES)
         if form.is_valid():
-            indumentaria.objects.create(
-                cod_indumentaria=form.cleaned_data['cod_indumentaria'],
-                tipo=form.cleaned_data['tipo'], 
-                genero=form.cleaned_data['genero'],
-                nombre=form.cleaned_data['nombre'],
-                stock=form.cleaned_data['stock'],
-                precio=form.cleaned_data['precio'], 
-                )
-            context={
-                'message': 'El Producto ha sido creado'
+            form.save()
+            indumentaria = IndumentariaForm.save(commit=False)
+            indumentaria.cod_indumentaria=form.cleaned_data.get('cod_indumentaria')
+            indumentaria.tipo=form.cleaned_data.get('tipo')
+            indumentaria.genero=form.cleaned_data.get('genero')
+            indumentaria.nombre=form.cleaned_data.get('nombre')
+            indumentaria.stock=form.cleaned_data.get('stock')
+            indumentaria. precio=form.cleaned_data.get('precio')
+            indumentaria.imagen=form.cleaned_data.get('imagen')
+            indumentaria.save() 
+            return redirect('lista_indumentaria')
+          
+                
+    context={
+                'errors':form.errors,
+                'form':IndumentariaForm ()       
 
                 }
-            return render (request,'Productos/create_indumentaria.html',context=context)
-        else:
-            context ={
-                'form_errors': form.errors,
-                'form':IndumentariaForm()
-            }
-            return render (request,'Productos/create_indumentaria.html',context=context)            
+    return render (request,'Productos/create_indumentaria.html',context=context)
+                   
+         
+ """
+class IndumentariaCreateView(CreateView):
+    model= indumentaria
+    template_name='Productos/create_indumentaria.html'
+    fields='__all__'
+    success_url='../lista_indumentaria'
 
 def lista_indumentaria(request):
     print (request.GET)
@@ -50,6 +60,14 @@ def lista_indumentaria(request):
         'indumentarias':indumentarias,
         }
     return render (request, 'Productos/lista_indumentaria.html', context=context)
+
+class BicicetasCreateView(CreateView):
+    model= bicicletas
+    template_name='Productos/create_bicicleta.html'
+    fields='__all__'
+    success_url='../lista_bicicleta'
+
+
 def crea_bicicletas(request):
     if request.method=='GET':
         context ={

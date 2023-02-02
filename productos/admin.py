@@ -6,10 +6,10 @@ from productos.models import bicicletas
 #admin.site.register(indumentaria)
 @admin.register(indumentaria)
 class IndumentariaAdmin(admin.ModelAdmin):
-    list_display=('cod_indumentaria','tipo','genero','nombre','stock','precio')
+    list_display=('cod_indumentaria','tipo','nombre','stock','precio','imagen')
 
 
 #admin.site.register(bicicletas)
 @admin.register(bicicletas)
 class BicicletaAdmin(admin.ModelAdmin):
-    list_display=('tipo','nombre','rodado','precio')
+    list_display=('tipo','nombre','rodado','precio','descuento','imagen')

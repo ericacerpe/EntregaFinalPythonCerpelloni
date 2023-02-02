@@ -8,8 +8,6 @@ from users.form import registerform, userupdateform,userprofilefom
 from users.models import UserProfile
 from django.contrib.auth.models import User
 
-
-
 def login_view(request):
 
     if request.method == 'GET':
@@ -39,7 +37,6 @@ def login_view(request):
             'errors':'Ususario o contraseña invalida'
         }        
     return render (request, 'Users/login.html', context=context)
-
 
 def register(request):
     if  request.method == 'GET':
