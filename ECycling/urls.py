@@ -3,7 +3,7 @@ from django.urls import path
 from django.conf.urls import include
 from django.conf import settings
 from django.conf.urls.static import static
-from ECycling.views import crea_clientes,lista_clientes,ClienteListView,actualiza_clientes,ClientesCreateView,ClienteDeleteView,ClienteUpdateView,index
+from ECycling.views import crea_clientes,lista_clientes,ClienteListView,actualiza_clientes,ClientesCreateView,ClienteDeleteView,ClienteUpdateView,index,muestra_nosotros
 
 
 urlpatterns=[
@@ -21,6 +21,9 @@ urlpatterns=[
     path('productos/', include('productos.urls')),
     path('users/', include('users.urls')),
     path('users/profile/', include('users.urls')),
+    path('nosotros/', muestra_nosotros),
+    
+    
    
  
 

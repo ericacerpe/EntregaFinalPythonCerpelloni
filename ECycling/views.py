@@ -93,7 +93,8 @@ def actualiza_clientes(request, pk):
             }
             return render (request,'Clientes/update_clientes.html',context=context)
 
-
+def muestra_nosotros(request):
+    return render (request, 'about_me.html', context={})   
 
 def lista_clientes(request):
     print (request.GET)

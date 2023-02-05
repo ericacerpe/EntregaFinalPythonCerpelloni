@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from ECycling.views import crea_clientes,lista_clientes,index
+from ECycling.views import crea_clientes,lista_clientes,index,muestra_nosotros
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -26,5 +26,8 @@ urlpatterns = [
     path('user/',include('users.urls')),
     path('productos/',include('productos.urls')),
     path('',index, name='index'),
+    path('ECycling/nosotros/',muestra_nosotros),
+    
+   
    
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -23,9 +23,12 @@
               <h5 class="card-title">Tipo y nombre : {{bicicleta.tipo}} {{bicicleta.nombre}}</h5>
               <p class="card-text">El rodado es {{bicicleta.rodado}}  </p>
               <p class="card-text">Marca  {{bicicleta.marca}} </p>
+              {% if request.user.is_authenticated %}
               <p class="card-text">Precio {{bicicleta.precio}} </p>
+              {% endif %}
               {% if request.user.is_authenticated %}
               {% if request.user.is_superuser %}
+                <p class="card-text">descuento {{bicicleta.descuento}} </p>
                 <a href="/ECycling/productos/actualiza_bicicletas/{{bicicleta.pk}}" class="btn btn-primary">Actualizar</a>
                 <a href="/ECycling/productos/borra_bicicletas/{{bicicleta.pk}}" class="btn btn-primary">Borrar</a>
                 {% endif %}
