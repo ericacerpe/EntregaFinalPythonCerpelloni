@@ -108,6 +108,7 @@ def lista_bicicleta(request):
         'bicicletas':bicicletas1,
         }
     return render (request, 'Productos/lista_bicicletas.html', context=context)
+    
 def index(request):
     return render (request, 'index.html', context={})   
 class IndumentariaUpdateView(UpdateView):

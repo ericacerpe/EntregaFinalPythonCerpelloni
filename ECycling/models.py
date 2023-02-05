@@ -11,3 +11,7 @@ class cliente(models.Model):
     telefono=models.CharField(max_length=100,null=True)
     email=models.CharField(max_length=100,null=True)
 
+class personalizacion(models.Model):
+    titulo=models.CharField(max_length=100,null=True)
+    imagen_portada=models.ImageField  (upload_to='imagen_portada',null=True, blank=True)
+   

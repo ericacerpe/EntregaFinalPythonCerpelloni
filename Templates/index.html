@@ -1,23 +1,31 @@
 {% extends 'base.html'%}
 
 {% block content %}
+
 <h1>ECyling</h1>
+     
+        {% if message %}
+            <h3>{{message}}</h3>
+        {% endif %}    
 
-    {% if message %}
-        <h3>{{message}}</h3>
-    {% endif %}    
-
-<article class="a-page is-work" data-router-view="renderer"> 
-    <div class="a-wrapper"> 
-        <div class="a-scroll" style="transform: translate3d(0px, 0px, 0px);"> 
-            <header id="h-hero"> 
-                <div class="heading"> 
-                <center>    
-                <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/professional-female-bike-rider-drinks-water-during-royalty-free-image-1673008468.jpg?crop=0.79395xw:1xh;center,top&resize=1200:*" alt="ECyling" style="" height=”1000” width="863”> 
-                </center>
-                </div> 
-                <div class="mask"> 
-                   <div class="bottom-r"> 
-                <p style=""><div class="line"><div style=""> ECyling es un eCommers de ciclismo</div></div>
-                    <div class="line"><div style=""> Donde encontraras todo lo necesario para tus entrenamientos</div></div></p>
+    <article class="a-page is-work" data-router-view="renderer"> 
+        <div class="a-wrapper"> 
+            <div class="a-scroll" style="transform: translate3d(0px, 0px, 0px);"> 
+                <header id="h-hero"> 
+                    {% for personalizacion in personalizaciones %}
+    
+                    <div class="heading"> 
+                    <center>     
+                        <!--  <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/professional-female-bike-rider-drinks-water-during-royalty-free-image-1673008468.jpg?crop=0.79395xw:1xh;center,top&resize=1200:*" alt="ECyling" style="" height=”1000” width="863”> -->
+                        <h2 class="card-text">{{personalizacion.titulo}}  </h2>
+                        <img src="{{ personalizacion.imagen_portada.url }}"  alt="ECyling" height="900" width="1100">   
+                    </center>
+                    {% endfor %}    
+                    </div> 
+                    <div class="mask"> 
+                    <div class="bottom-r"> 
+                    <center>     
+                        <p style=""><div class="line"><div style=""> ECyling es un eCommers de ciclismo</div></div>
+                        <div class="line"><div style=""> Donde encontraras todo lo necesario para tus entrenamientos</div></div></p>
+                    </center> 
 {% endblock %}

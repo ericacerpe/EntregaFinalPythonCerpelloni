@@ -50,7 +50,7 @@
                     </li>
 
                     {% if request.user.is_authenticated %}
-                    <li class="nav-item" style="margin-right: 700px;">
+                    <li class="nav-item" style="margin-right: 800px;">
                     <li class="nav-item" >
                         <a class="nav-link" href="/ECycling/users/logout">Logout</a>
                     </li>
@@ -67,7 +67,7 @@
                         {% endif %}
                     </li> 
                     {% else %}
-                    <li class="nav-item" style="margin-right: 800px;">
+                    <li class="nav-item" style="margin-right: 900px;">
                     <li class="nav-item">
                         <a class="nav-link" href="/ECycling/users/login">Login</a>
                     </li> 
@@ -78,15 +78,15 @@
                     </li>
                     {% endif %}
                 </ul>
-                <form class="form-inline my-2 my-lg-0" action ="/ECycling/lista_clientes" method="GET" >
+<!--                 <form class="form-inline my-2 my-lg-0" action ="/ECycling/lista_clientes" method="GET" >
                     <input class="form-control mr-sm-2" type="search" placeholder="Busca Clientes" aria-label="Search" name="search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                </form> -->
             </div>
         </nav>
     </head>
     {% block content%}
-
+    
     {% endblock%}
 
 

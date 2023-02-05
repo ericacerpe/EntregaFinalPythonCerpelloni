@@ -4,7 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView,DeleteView,UpdateView
 from django.urls import reverse_lazy
-from ECycling.models import cliente
+from ECycling.models import cliente, personalizacion
 from ECycling.forms import ClienteForm 
 
 
@@ -94,7 +94,23 @@ def actualiza_clientes(request, pk):
             return render (request,'Clientes/update_clientes.html',context=context)
 
 def muestra_nosotros(request):
-    return render (request, 'about_me.html', context={})   
+    return render (request, 'about_me.html', context={})  
+
+""" def muestra_imagen (request):
+    if request.method=='GET':
+        personalizaciones = personalizacion.objects.all()
+        context={
+            'personalizaciones':personalizaciones
+        }
+    return render (request,'index.html',context=context) """
+
+def index(request):
+    personalizaciones = personalizacion.objects.all()
+    context={
+            'personalizaciones':personalizaciones
+        }
+    print (context)    
+    return render (request, 'index.html', context=context)   
 
 def lista_clientes(request):
     print (request.GET)
@@ -138,8 +154,7 @@ class ClienteUpdateView(UpdateView):
 
 
 
-def index(request):
-    return render (request, 'index.html', context={})   
+
 
 
 
