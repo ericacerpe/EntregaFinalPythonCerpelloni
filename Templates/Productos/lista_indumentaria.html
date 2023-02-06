@@ -24,8 +24,10 @@
               <h5 class="card-title">Cod y nombre : {{indumentaria.cod_indumentaria}} {{indumentaria.nombre}}</h5>
               <p class="card-text">El tipo es {{indumentaria.tipo}}  </p>
               <p class="card-text">Generos  {{indumentaria.genero}} </p>
+              {% if request.user.is_authenticated %}
               <p class="card-text">Cantidad en Stock: {{indumentaria.stock}} </p>
               <p class="card-text">Precio {{indumentaria.precio}} </p>
+              {% endif %}
               {% if request.user.is_authenticated %}
               {% if request.user.is_superuser %}
                 <a href="/ECycling/productos/actualiza_indumentaria/{{indumentaria.pk}}" class="btn btn-primary">Actualizar</a>

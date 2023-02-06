@@ -39,7 +39,7 @@ def crea_clientes(request):
                 'form_errors': form.errors,
                 'form':ClienteForm()
             }
-            return render (request,'Clientes/create_clientes.html',context=context)
+            return render (request,'Clientes/create_clientes.html',context=context) 
 
 class ClientesCreateView(CreateView):
     model= cliente
@@ -96,14 +96,6 @@ def actualiza_clientes(request, pk):
 def muestra_nosotros(request):
     return render (request, 'about_me.html', context={})  
 
-""" def muestra_imagen (request):
-    if request.method=='GET':
-        personalizaciones = personalizacion.objects.all()
-        context={
-            'personalizaciones':personalizaciones
-        }
-    return render (request,'index.html',context=context) """
-
 def index(request):
     personalizaciones = personalizacion.objects.all()
     context={
@@ -126,18 +118,10 @@ def lista_clientes(request):
 
 
 class ClienteListView(LoginRequiredMixin,ListView):
-    
-     #if 'search' in ListView.get:
-     #   searh  = ListView.get['search']
-        model = cliente
-        #.objects.filter(nombre__contains=searh)
-        template_name= 'Clientes/lista_clientes.html'
-     #else:
-     #   model= cliente
-
-     #   template_name= 'Clientes/lista_clientes.html'
-   
-   
+    model = cliente
+    template_name= 'Clientes/lista_clientes.html'
+  
+  
 class ClienteDeleteView(DeleteView):
     model=cliente
     template_name='Clientes/delete_clientes.html' 
